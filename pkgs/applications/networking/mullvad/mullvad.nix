@@ -15,7 +15,7 @@
 }:
 rustPlatform.buildRustPackage rec {
   pname = "mullvad";
-  version = "2022.4";
+  version = "2022.5";
 
   src = fetchFromGitHub {
     owner = "mullvad";
@@ -24,7 +24,7 @@ rustPlatform.buildRustPackage rec {
     hash = "sha256-s0Cmeh10lQUB5BK4i1qxkDy/ylx/3c6V66dxH+kcnLs=";
   };
 
-  cargoHash = "sha256-HPURL+CFUVLWRq8nzLiZxDhckgH76b6JBUObLGtoEEw=";
+  cargoHash = "sha256-uQ9bOcPlSFYxW3G7DTrcvCE9hiGW5ockL6njyRk5pZs=";
 
   nativeBuildInputs = [
     pkg-config
@@ -49,7 +49,7 @@ rustPlatform.buildRustPackage rec {
     # Place all binaries in the 'mullvad-' namespace, even though these
     # specific binaries aren't used in the lifetime of the program.
     ''
-      for bin in relay_list translations-converter; do
+      for bin in relay_list translations-converter tunnel-obfuscation; do
         mv "$out/bin/$bin" "$out/bin/mullvad-$bin"
       done
     '' +
